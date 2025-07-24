@@ -21,7 +21,7 @@ public class AppTest {
             driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
 
             driver.get("https://www.google.com");
-            Assert.assertEquals(driver.getTitle(), "Google");
+            Assert.assertEquals(driver.getTitle(), "Google2");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
