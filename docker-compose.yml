@@ -9,7 +9,16 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock  # 🔥 CRITICAL: allows Jenkins to control Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - selenium  # Wait for Selenium to be ready
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium
+    ports:
+      - "4444:4444"
+    shm_size: '2g'
 
 volumes:
   jenkins_home:
